@@ -7,6 +7,7 @@ UnityGenerated/
 Library/
 Assets/AssetStoreTools*
 Assets/Plugins/Android*
+Logs/
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
