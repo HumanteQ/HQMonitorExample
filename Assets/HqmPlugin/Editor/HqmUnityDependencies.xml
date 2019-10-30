@@ -11,7 +11,7 @@
       <repository>https://repo.maven.apache.org/maven2</repository>
       <repository>https://jitpack.io</repository>
       <repository>https://maven.fabric.io/public</repository>
-      <repository>https://dl.bintray.com/humanteq/HQM/</repository>
+      <repository>https://dl.bintray.com/humanteq/hqm-sdk/</repository>
     </repositories>
     <!-- The "spec" attribute is *required* and provides the Maven package
          specification.
@@ -25,8 +25,6 @@
 
          Additional repositories can be added using the "repositories" element.
     -->
-	<androidPackage spec="io.humanteq.hqsdk:hqsdk-core:1.2.3"/>
-	<androidPackage spec="io.humanteq.hqsdk:hqsdk-apps:1.2.3"/>
-	<androidPackage spec="com.google.code.gson:gson:2.8.5"/>
+	<androidPackage spec="io.humanteq.hqm:hqm-core:2.0.0-alpha05-fix1"/>
   </androidPackages>
 </dependencies>
