@@ -2,8 +2,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using System;
-using System.Runtime.InteropServices;
 
 public class HqmUnity : MonoBehaviour {
     Text myText;
@@ -13,27 +11,34 @@ public class HqmUnity : MonoBehaviour {
         myText = GameObject.Find("Text1").GetComponent<Text>();
 
         myText.text = myText.text + "\nStarting HQM";
-        HQSdk.init(
+        HQSdk.Init(
             "38e44d7", 		// your api key
             true);		// is debug enabled
 
         myText.text = myText.text + "\nLogging events";
-        HQSdk.logEvent("test_event", "test");
+        HQSdk.LogEvent("test_event", "test");
 
-	Dictionary<string, string> map = new Dictionary<string, string>();
-	map["test1"] = "test_value1";
-	map["test2"] = "test_value2";
+        Dictionary<string, string> map = new Dictionary<string, string>();
+        map["test1"] = "test_value1";
+        map["test2"] = "test_value2";
 
-        HQSdk.logEvent("test_event", map);
+        HQSdk.LogEvent("test_event", map);
 
         myText.text = myText.text + "\nCollecting installed apps";
-        HQSdk.start();
+        HQSdk.Start();
 
         myText.text = myText.text + "\nRequesting group id list:";
-        var groupIdList = HQSdk.getGroupIdList();
-
+        var groupIdList = HQSdk.GetGroupIdList();
+        foreach (string id in groupIdList)
+        {
+            myText.text = myText.text + "\n" + id;
+        }
 
         myText.text = myText.text + "\n\nRequesting group name list:";
-        var getGroupNameList = HQSdk.getGroupNameList();
+        var groupNameList = HQSdk.GetGroupNameList();
+        foreach (string name in groupNameList)
+        {
+            myText.text = myText.text + "\n" + name;
+        }
     }
 }

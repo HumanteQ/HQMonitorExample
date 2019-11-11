@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 
 
-public class HQSdk : MonoBehaviour {
+public class HQSdk {
 	#if UNITY_ANDROID && !UNITY_EDITOR
 
 	private static AndroidJavaClass pluginClass = new AndroidJavaClass("io.humanteq.hq_unity.HqmUnity");
@@ -37,7 +37,7 @@ public class HQSdk : MonoBehaviour {
 		return javaMap;
 	}
 
-	private static AndroidJavaObject getContext() {
+	private static AndroidJavaObject GetContext() {
 		if (Application.platform == RuntimePlatform.Android)
 		{
 			using (var javaUnityPlayer = new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
@@ -52,8 +52,8 @@ public class HQSdk : MonoBehaviour {
 		return null;
 	}
 
-	public static void init(string key, bool isDebug) {
-		AndroidJavaObject context = getContext();
+	public static void Init(string key, bool isDebug) {
+		AndroidJavaObject context = GetContext();
 
 		if(context != null && pluginClass != null) {
 			pluginClass.CallStatic("init", context,
@@ -62,21 +62,21 @@ public class HQSdk : MonoBehaviour {
 		}
 	}
 
-	public static void start() {
-		AndroidJavaObject context = getContext();
+	public static void Start() {
+		AndroidJavaObject context = GetContext();
 
 		if (context != null && pluginClass != null) {
 			pluginClass.CallStatic("start", context);
 		}
 	}
 
-	public static void logEvent(string key, string data) {
+	public static void LogEvent(string key, string data) {
 		if (pluginClass != null) {
 			pluginClass.CallStatic("logEvent", key, data);
 		}
 	}
 
-	public static void logEvent(string key, IDictionary<string, string> data) {
+	public static void LogEvent(string key, IDictionary<string, string> data) {
 		if (pluginClass != null) {
 			AndroidJavaObject map = CreateJavaMapFromDictainary(data);
 
@@ -84,8 +84,8 @@ public class HQSdk : MonoBehaviour {
 		}
 	}
 
-	public static string[] getGroupIdList() {
-		AndroidJavaObject context = getContext();
+	public static string[] GetGroupIdList() {
+		AndroidJavaObject context = GetContext();
 
 		if (context != null && pluginClass != null) {
 			return pluginClass.CallStatic<string[]>("getGroupIdList", context);
@@ -94,8 +94,8 @@ public class HQSdk : MonoBehaviour {
 		return null;
 	}
 
-	public static string[] getGroupNameList() {
-		AndroidJavaObject context = getContext();
+	public static string[] GetGroupNameList() {
+		AndroidJavaObject context = GetContext();
 
 		if (context != null && pluginClass != null) {
 			return pluginClass.CallStatic<string[]>("getGroupNameList", context);
@@ -106,17 +106,17 @@ public class HQSdk : MonoBehaviour {
 
 	#else
 
-	public static void init(string key, bool isDebug) { }
+	public static void Init(string key, bool isDebug) { }
 
-	public static void start() { }
+	public static void Start() { }
 
-	public static void logEvent(string key, string data) { }
+	public static void LogEvent(string key, string data) { }
 
-	public static void logEvent(string key, IDictionary<string, string> data) { }
+	public static void LogEvent(string key, IDictionary<string, string> data) { }
 
-	public static string[] getGroupIdList() { return null; }
+	public static string[] GetGroupIdList() { return null; }
 
-	public static string[] getGroupNameList() { return null; }
+	public static string[] GetGroupNameList() { return null; }
 
 	#endif
 }
