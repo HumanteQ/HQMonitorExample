@@ -104,6 +104,26 @@ public class HQSdk {
 		return null;
 	}
 
+	public static void RequestUserData(string email) {
+		if (pluginClass != null) {
+		    pluginClass.CallStatic("requestUserData", email);
+		}
+	}
+
+	public static void DeleteUserData() {
+		if (pluginClass != null) {
+		    pluginClass.CallStatic("deleteUserData");
+		}
+	}
+
+	public static string GetUuid() {
+		if (pluginClass != null) {
+	        return pluginClass.CallStatic<string>("getUuid");
+		}
+
+		return null;
+	}
+
 	#else
 
 	public static void Init(string key, bool isDebug) { }
@@ -117,6 +137,12 @@ public class HQSdk {
 	public static string[] GetGroupIdList() { return null; }
 
 	public static string[] GetGroupNameList() { return null; }
+
+	public static void RequestUserData(string email) { }
+
+	public static void DeleteUserData() { }
+
+	public static string GetUuid() { return null; }
 
 	#endif
 }
