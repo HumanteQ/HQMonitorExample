@@ -124,6 +124,12 @@ public class HQSdk {
 		return null;
 	}
 
+	public static void TrackSegments(bool enableSegmentsTracking) {
+		if (pluginClass != null) {
+		    pluginClass.CallStatic("trackSegments", enableSegmentsTracking);
+		}
+	}
+
 	#else
 
 	public static void Init(string key, bool isDebug) { }
@@ -143,6 +149,8 @@ public class HQSdk {
 	public static void DeleteUserData() { }
 
 	public static string GetUuid() { return null; }
+
+	public static void TrackSegments(bool enableSegmentsTracking) { }
 
 	#endif
 }

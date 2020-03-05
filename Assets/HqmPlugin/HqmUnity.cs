@@ -41,13 +41,16 @@ public class HqmUnity : MonoBehaviour {
             myText.text = myText.text + "\n" + name;
         }
 
-        myText.text = myText.text + "\n\nRequesting user data...";
+        myText.text = myText.text + "\n\nRequesting user data.";
         HQSdk.RequestUserData("some@ema.il");
 
-        myText.text = myText.text + "\n\nRequesting user data deletion...";
+        myText.text = myText.text + "\n\nDeleting user data.";
         HQSdk.DeleteUserData();
 
         string uuid = HQSdk.GetUuid();
         myText.text = myText.text + "\n\nUuid:" + uuid;
+
+        myText.text = myText.text + "\n\nEnabling segments tracking...";
+        HQSdk.TrackSegments(true);
     }
 }
