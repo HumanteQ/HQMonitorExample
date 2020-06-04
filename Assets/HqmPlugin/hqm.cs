@@ -130,6 +130,25 @@ public class HQSdk {
 		}
 	}
 
+
+	public static void InAppPurchase(int revenue, string currency, string item_name) {
+		if (pluginClass != null) {
+			pluginClass.CallStatic("inAppPurchase", revenue, currency, item_name);
+		}
+	}
+
+	public static void SubscriptionPurchase(int revenue, string currency, string item_name, string status) {
+		if (pluginClass != null) {
+			pluginClass.CallStatic("subscriptionPurchase", revenue, currency, item_name, status);
+		}
+	}
+
+	public static void TutorialStep(string step, string result) {
+    if (pluginClass != null) {
+            pluginClass.CallStatic("tutorialStep", step, result);
+        }
+	}
+
 	#else
 
 	public static void Init(string key, bool isDebug) { }
@@ -151,6 +170,12 @@ public class HQSdk {
 	public static string GetUuid() { return null; }
 
 	public static void TrackSegments(bool enableSegmentsTracking) { }
+
+	public static void InAppPurchase(int revenue, string currency, string item_name) { }
+
+	public static void SubscriptionPurchase(int revenue, string currency, string item_name, string status) { }
+
+	public static void TutorialStep(string step, string result) { }
 
 	#endif
 }
