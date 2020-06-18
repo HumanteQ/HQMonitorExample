@@ -61,5 +61,11 @@ public class HqmUnity : MonoBehaviour {
 
         myText.text = myText.text + "\n\nSending predefined event 'tutorialStep'...";
         HQSdk.TutorialStep("onboarding_step_1", "start");
+
+        myText.text = myText.text + "\n\nEnabling segments tracking for Firebase...";
+        HQSdk.TrackSegments(true, EventTracker.Firebase);
+
+        myText.text = myText.text + "\n\nEnabling segments tracking for AppsFlyer...";
+        HQSdk.TrackSegments(true, EventTracker.AppsFlyer);
     }
 }

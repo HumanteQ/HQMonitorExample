@@ -3,8 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-
+public enum EventTracker
+{
+    Firebase,
+    AppsFlyer
+}
+    
 public class HQSdk {
+
 	#if UNITY_ANDROID && !UNITY_EDITOR
 
 	private static AndroidJavaClass pluginClass = new AndroidJavaClass("io.humanteq.hq_unity.HqmUnity");
@@ -130,6 +136,25 @@ public class HQSdk {
 		}
 	}
 
+	public static void TrackSegments(bool enableSegmentsTracking, EventTracker tracker) {
+		if (pluginClass != null) {
+		    switch(tracker)
+            {
+                 case EventTracker.Firebase:
+                 {
+		            pluginClass.CallStatic("trackSegments", enableSegmentsTracking, "FB");
+                    break;
+                 }
+                 case EventTracker.AppsFlyer:
+                 {
+		            pluginClass.CallStatic("trackSegments", enableSegmentsTracking, "AF");
+                    break;
+                 }
+                 default: break;
+            }
+		}
+	}
+
 
 	public static void InAppPurchase(int revenue, string currency, string item_name) {
 		if (pluginClass != null) {
@@ -170,6 +195,8 @@ public class HQSdk {
 	public static string GetUuid() { return null; }
 
 	public static void TrackSegments(bool enableSegmentsTracking) { }
+
+	public static void TrackSegments(bool enableSegmentsTracking, EventTracker tracker) { }
 
 	public static void InAppPurchase(int revenue, string currency, string item_name) { }
 
