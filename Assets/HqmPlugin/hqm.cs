@@ -8,7 +8,7 @@ public enum EventTracker
     Firebase,
     AppsFlyer
 }
-    
+
 public class HQSdk {
 
 	#if UNITY_ANDROID && !UNITY_EDITOR
