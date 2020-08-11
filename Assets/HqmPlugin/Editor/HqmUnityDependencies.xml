@@ -25,6 +25,6 @@
 
              Additional repositories can be added using the "repositories" element.
         -->
-        <androidPackage spec="io.humanteq.hqm:hqm-core:2.1.2" />
+        <androidPackage spec="io.humanteq.hqm:hqm-core:2.1.3" />
     </androidPackages>
 </dependencies>
