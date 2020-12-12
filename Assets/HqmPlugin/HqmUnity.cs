@@ -55,9 +55,11 @@ public class HqmUnity : MonoBehaviour {
 
         myText.text = myText.text + "\n\nSending predefined event 'inAppPurchase'...";
         HQSdk.InAppPurchase(75, "EUR", "Useful item name");
+        HQSdk.InAppPurchase(75.1, "EUR", "Useful item name");
 
         myText.text = myText.text + "\n\nSending predefined event 'subscriptionPurchase'...";
         HQSdk.SubscriptionPurchase(75, "EUR", "Useful item name", "trial");
+        HQSdk.SubscriptionPurchase(75.1, "EUR", "Useful item name", "trial");
 
         myText.text = myText.text + "\n\nSending predefined event 'tutorialStep'...";
         HQSdk.TutorialStep("onboarding_step_1", "start");

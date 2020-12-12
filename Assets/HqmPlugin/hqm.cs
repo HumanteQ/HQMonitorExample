@@ -156,13 +156,13 @@ public class HQSdk {
 	}
 
 
-	public static void InAppPurchase(int revenue, string currency, string item_name) {
+	public static void InAppPurchase(double revenue, string currency, string item_name) {
 		if (pluginClass != null) {
 			pluginClass.CallStatic("inAppPurchase", revenue, currency, item_name);
 		}
 	}
 
-	public static void SubscriptionPurchase(int revenue, string currency, string item_name, string status) {
+	public static void SubscriptionPurchase(double revenue, string currency, string item_name, string status) {
 		if (pluginClass != null) {
 			pluginClass.CallStatic("subscriptionPurchase", revenue, currency, item_name, status);
 		}
@@ -198,9 +198,9 @@ public class HQSdk {
 
 	public static void TrackSegments(bool enableSegmentsTracking, EventTracker tracker) { }
 
-	public static void InAppPurchase(int revenue, string currency, string item_name) { }
+	public static void InAppPurchase(double revenue, string currency, string item_name) { }
 
-	public static void SubscriptionPurchase(int revenue, string currency, string item_name, string status) { }
+	public static void SubscriptionPurchase(double revenue, string currency, string item_name, string status) { }
 
 	public static void TutorialStep(string step, string result) { }
 
