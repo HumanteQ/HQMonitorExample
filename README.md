@@ -2,14 +2,14 @@
 
 ## HQMonitor Unity Sample App.
 
-Unity package: [hqm_2.1.9.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.1.9.unitypackage)
+Unity package: [hqm_2.1.10.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.1.10.unitypackage)
 
 #### Integration instructions:
 
   1. Install [Play Services Resolver](https://github.com/googlesamples/unity-jar-resolver/)
-  2. Download and import [hqm_2.1.9.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.1.9.unitypackage)
+  2. Download and import [hqm_2.1.10.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.1.10.unitypackage)
 
-   `(Assets -> Import package -> Custom package -> hqm_2.1.9.unitypackage )`
+   `(Assets -> Import package -> Custom package -> hqm_2.1.10.unitypackage )`
    
   3. Force resolve dependencies:
 
