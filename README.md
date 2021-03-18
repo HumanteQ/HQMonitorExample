@@ -2,20 +2,20 @@
 
 ## HQMonitor Unity Sample App.
 
-Unity package: [hqm_2.1.10.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.1.10.unitypackage)
+Unity package: [hqm_2.2.0.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.2.0.unitypackage)
 
 #### Integration instructions:
 
   1. Install [Play Services Resolver](https://github.com/googlesamples/unity-jar-resolver/)
-  2. Download and import [hqm_2.1.10.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.1.10.unitypackage)
+  2. Download and import [hqm_2.2.0.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.2.0.unitypackage)
 
-   `(Assets -> Import package -> Custom package -> hqm_2.1.10.unitypackage )`
+   `(Assets -> Import package -> Custom package -> hqm_2.2.0.unitypackage )`
    
   3. Force resolve dependencies:
 
    `(Assets -> Play Services Resolver -> Android Resolver -> Force Resolve)`
    
-  4. Initialize SDK:
+  4. Initialize SDK (ONLY after obtaining user consent):
 ```csharp
             ...
             
@@ -25,20 +25,14 @@ Unity package: [hqm_2.1.10.unitypackage](https://github.com/HumanteQ/HQMonitorEx
                 true);              // is debug enabled
   ```
   
-  5. Start SDK: ( After obtaining user consent )
-```csharp  
-            // Start SDK
-            HQSdk.Start();
-  ```
-  
-  6. Send user-defined event:
+  5. Send user-defined event:
 ```csharp  
  
             // Send event as text ...
             HQSdk.LogEvent("test_event", "test");
 ```
  
-  7. Send complex user-defined event:
+  6. Send complex user-defined event:
 ```csharp  
             
             // ... or as a map.
@@ -49,7 +43,7 @@ Unity package: [hqm_2.1.10.unitypackage](https://github.com/HumanteQ/HQMonitorEx
             HQSdk.LogEvent("test_event", map);
 ```
 
-  8. Request predicted user groups: (HQSdk will need some time, typically 10 - 15 min, to compute user groups)
+  7. Request predicted user groups: (HQSdk will need some time, typically 10 - 15 min, to compute user groups)
 ```csharp
             // Request predicted user group id list ...
             var groupIdList = HQSdk.GetGroupIdList();
@@ -60,19 +54,19 @@ Unity package: [hqm_2.1.10.unitypackage](https://github.com/HumanteQ/HQMonitorEx
             ...
 ```
 
-  9. Send target segments to Firebase Analytics. Firebase Analytics dependency must be imported separately.
+  8. Send target segments to Firebase Analytics. Firebase Analytics dependency must be imported separately.
 ```csharp
             HQSdk.TrackSegments(true);
 ```
 
-  10. Send predefined event `InAppPurchase(int revenue, string currency, string item_name)`.
+  9. Send predefined event `InAppPurchase(int revenue, string currency, string item_name)`.
    
       `currency`    - a string representing a currency id in ISO 4217 format (https://www.currency-iso.org/dam/downloads/lists/list_one.xml)
 ```csharp
             HQSdk.InAppPurchase(75, "EUR", "Useful item name");
 ```
 
-  11. Send predefined event `SubscriptionPurchase(int revenue, string currency, string item_name, string status)`.
+  10. Send predefined event `SubscriptionPurchase(int revenue, string currency, string item_name, string status)`.
       
       `currency`    - a string representing a currency id in ISO 4217 format (https://www.currency-iso.org/dam/downloads/lists/list_one.xml)
       
@@ -81,7 +75,7 @@ Unity package: [hqm_2.1.10.unitypackage](https://github.com/HumanteQ/HQMonitorEx
             HQSdk.InAppPurchase(75, "EUR", "Useful item name", "trial");
 ```
 
-  12. Send predefined event `TutorialStep(string step, string result)`.
+  11. Send predefined event `TutorialStep(string step, string result)`.
   
       `step`        - a current step of tutorial
       
