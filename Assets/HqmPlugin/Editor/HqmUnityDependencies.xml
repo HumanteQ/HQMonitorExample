@@ -11,7 +11,7 @@
             <repository>https://repo.maven.apache.org/maven2</repository>
             <repository>https://jitpack.io</repository>
             <repository>https://maven.fabric.io/public</repository>
-            <repository>https://dl.bintray.com/humanteq/hqm-sdk/</repository>
+            <repository>https://repo.repsy.io/mvn/humanteq/hqsdk</repository>
         </repositories>
         <!-- The "spec" attribute is *required* and provides the Maven package
              specification.
