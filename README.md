@@ -1,21 +1,49 @@
-﻿[ ![Download](https://api.bintray.com/packages/humanteq/hqm-sdk/hqm-core/images/download.svg) ](https://bintray.com/humanteq/hqm-sdk/hqm-core/_latestVersion)
+﻿## HQMonitor Unity Sample App.
 
-## HQMonitor Unity Sample App.
-
-Unity package: [hqm_2.2.0.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.2.0.unitypackage)
+Unity package: [hqm_2.3.0.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.3.0.unitypackage)
 
 #### Integration instructions:
 
-  1. Install [Play Services Resolver](https://github.com/googlesamples/unity-jar-resolver/)
-  2. Download and import [hqm_2.2.0.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.2.0.unitypackage)
+1. Install latest Unity.
+2. Install [Play Services Resolver](https://github.com/googlesamples/unity-jar-resolver/)
+3. Download and import [hqm_2.3.0.unitypackage](https://github.com/HumanteQ/HQMonitorExample/raw/master/hqm_2.3.0.unitypackage)
 
-   `(Assets -> Import package -> Custom package -> hqm_2.2.0.unitypackage )`
-   
-  3. Force resolve dependencies:
+   `(Assets -> Import package -> Custom package -> hqm_2.3.0.unitypackage )`
+
+4. Force resolve dependencies:
 
    `(Assets -> Play Services Resolver -> Android Resolver -> Force Resolve)`
-   
-  4. Initialize SDK (ONLY after obtaining user consent):
+
+5. You can skip this step if your `Target API Level` < 30.
+   - Enable option `Custom Main Manifest` in `Build Settings -> Project Settings -> Player -> Publishing Settings -> Build` 
+   - Place `QUERY_ALL_PACKAGES` permission in your `Assets/Plugins/Android/AndroidManifest.xml`:
+
+```xml
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="your.package.id">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
+
+    <application>
+        <activity android:name="com.unity3d.player.UnityPlayerActivity"
+            android:theme="@style/UnityThemeSelector">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <meta-data android:name="unityplayer.UnityActivity" android:value="true" />
+        </activity>
+    </application>
+</manifest>
+```
+
+In order to comply with Google Play policy you also have to declare this permission using the Declaration Form in Play Console. [More info](https://support.google.com/googleplay/android-developer/answer/10158779?hl=en)
+
+6. Initialize SDK (ONLY after obtaining user consent):
+
 ```csharp
             ...
             
@@ -24,15 +52,15 @@ Unity package: [hqm_2.2.0.unitypackage](https://github.com/HumanteQ/HQMonitorExa
                 "your_api_key",     // your api key
                 true);              // is debug enabled
   ```
-  
-  5. Send user-defined event:
+
+7. Send user-defined event:
 ```csharp  
  
             // Send event as text ...
             HQSdk.LogEvent("test_event", "test");
 ```
- 
-  6. Send complex user-defined event:
+
+8. Send complex user-defined event:
 ```csharp  
             
             // ... or as a map.
@@ -43,7 +71,7 @@ Unity package: [hqm_2.2.0.unitypackage](https://github.com/HumanteQ/HQMonitorExa
             HQSdk.LogEvent("test_event", map);
 ```
 
-  7. Request predicted user groups: (HQSdk will need some time, typically 10 - 15 min, to compute user groups)
+9. Request predicted user groups: (HQSdk will need some time, typically 10 - 15 min, to compute user groups)
 ```csharp
             // Request predicted user group id list ...
             var groupIdList = HQSdk.GetGroupIdList();
@@ -54,32 +82,35 @@ Unity package: [hqm_2.2.0.unitypackage](https://github.com/HumanteQ/HQMonitorExa
             ...
 ```
 
-  8. Send target segments to Firebase Analytics. Firebase Analytics dependency must be imported separately.
+10. Send target segments to Firebase Analytics. Firebase Analytics dependency must be imported separately.
 ```csharp
             HQSdk.TrackSegments(true);
 ```
 
-  9. Send predefined event `InAppPurchase(int revenue, string currency, string item_name)`.
-   
-      `currency`    - a string representing a currency id in ISO 4217 format (https://www.currency-iso.org/dam/downloads/lists/list_one.xml)
+11. Send predefined event `InAppPurchase(int revenue, string currency, string item_name)`.
+
+    `currency`    - a string representing a currency id in ISO 4217
+    format (https://www.currency-iso.org/dam/downloads/lists/list_one.xml)
 ```csharp
             HQSdk.InAppPurchase(75, "EUR", "Useful item name");
 ```
 
-  10. Send predefined event `SubscriptionPurchase(int revenue, string currency, string item_name, string status)`.
-      
-      `currency`    - a string representing a currency id in ISO 4217 format (https://www.currency-iso.org/dam/downloads/lists/list_one.xml)
-      
-      `status`      - state of purchase event (trial/first/renewal/...)
+12. Send predefined
+    event `SubscriptionPurchase(int revenue, string currency, string item_name, string status)`.
+
+    `currency`    - a string representing a currency id in ISO 4217
+    format (https://www.currency-iso.org/dam/downloads/lists/list_one.xml)
+
+    `status`      - state of purchase event (trial/first/renewal/...)
 ```csharp
             HQSdk.InAppPurchase(75, "EUR", "Useful item name", "trial");
 ```
 
-  11. Send predefined event `TutorialStep(string step, string result)`.
-  
-      `step`        - a current step of tutorial
-      
-      `result`      - a result of the current step
+13. Send predefined event `TutorialStep(string step, string result)`.
+
+    `step`        - a current step of tutorial
+
+    `result`      - a result of the current step
 ```csharp
             HQSdk.TutorialStep("onboarding_step_1", "start");
 ```
