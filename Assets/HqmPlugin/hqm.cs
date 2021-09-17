@@ -58,13 +58,14 @@ public class HQSdk {
 		return null;
 	}
 
-	public static void Init(string key, bool isDebug) {
+	public static void Init(string key, bool isDebug, bool enableIdTracking) {
 		AndroidJavaObject context = GetContext();
 
 		if(context != null && pluginClass != null) {
 			pluginClass.CallStatic("init", context,
 						key,			// your key
-						isDebug);		// debug enabled
+						isDebug,
+						enableIdTracking);		// debug enabled
 		}
 	}
 
@@ -79,6 +80,14 @@ public class HQSdk {
 	public static void LogEvent(string key, string data) {
 		if (pluginClass != null) {
 			pluginClass.CallStatic("logEvent", key, data);
+		}
+	}
+
+	public static void SetId(string id) {
+		AndroidJavaObject context = GetContext();
+
+		if (context != null && pluginClass != null) {
+			pluginClass.CallStatic("setId", context, id);
 		}
 	}
 

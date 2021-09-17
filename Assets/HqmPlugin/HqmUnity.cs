@@ -12,8 +12,9 @@ public class HqmUnity : MonoBehaviour {
 
         myText.text = myText.text + "\nStarting HQM";
         HQSdk.Init(
-            "38e44d7", 		// your api key
-            true);		// is debug enabled
+            "38e44d7",  // your api key
+            true,       // debug mode
+            true);		// enable tracking of all available ids
 
         myText.text = myText.text + "\nLogging events";
         HQSdk.LogEvent("test_event", "test");
