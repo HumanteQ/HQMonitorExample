@@ -58,6 +58,10 @@ public class HQSdk {
 		return null;
 	}
 
+	public static void Init(string key, bool isDebug) {
+	    Init(key, isDebug, true);
+	}
+
 	public static void Init(string key, bool isDebug, bool enableIdTracking) {
 		AndroidJavaObject context = GetContext();
 
@@ -186,6 +190,8 @@ public class HQSdk {
 	#else
 
 	public static void Init(string key, bool isDebug) { }
+
+	public static void Init(string key, bool isDebug, bool enableTracking) { }
 
 	public static void Start() { }
 

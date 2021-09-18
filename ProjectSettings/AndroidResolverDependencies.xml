@@ -1,20 +1,20 @@
 <dependencies>
   <packages>
-    <package>io.humanteq.hqm:hqm-core:2.2.0</package>
+    <package>io.humanteq.hqm:hqm-core:2.3.2</package>
   </packages>
   <files>
-    <file>Assets/Plugins/Android/androidx.annotation.annotation-1.1.0.jar</file>
+    <file>Assets/Plugins/Android/androidx.annotation.annotation-1.2.0.jar</file>
     <file>Assets/Plugins/Android/androidx.arch.core.core-common-2.0.1.jar</file>
     <file>Assets/Plugins/Android/androidx.arch.core.core-runtime-2.0.1.aar</file>
     <file>Assets/Plugins/Android/androidx.room.room-common-2.2.5.jar</file>
     <file>Assets/Plugins/Android/androidx.room.room-runtime-2.2.5.aar</file>
     <file>Assets/Plugins/Android/androidx.sqlite.sqlite-2.0.1.aar</file>
     <file>Assets/Plugins/Android/androidx.sqlite.sqlite-framework-2.0.1.aar</file>
-    <file>Assets/Plugins/Android/com.google.code.gson.gson-2.8.6.jar</file>
+    <file>Assets/Plugins/Android/com.google.code.gson.gson-2.8.7.jar</file>
     <file>Assets/Plugins/Android/com.squareup.okhttp3.okhttp-3.12.0.jar</file>
     <file>Assets/Plugins/Android/com.squareup.okio.okio-1.15.0.jar</file>
     <file>Assets/Plugins/Android/com.squareup.retrofit2.converter-gson-2.6.4.jar</file>
     <file>Assets/Plugins/Android/com.squareup.retrofit2.retrofit-2.6.4.jar</file>
-    <file>Assets/Plugins/Android/io.humanteq.hqm.hqm-core-2.2.0.aar</file>
+    <file>Assets/Plugins/Android/io.humanteq.hqm.hqm-core-2.3.2.aar</file>
   </files>
 </dependencies>
